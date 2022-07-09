@@ -1,0 +1,81 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+<div class="slon__page slon__page--oplata slon__page--header">
+    <div class="container">
+        <ul class="breadcrumbs nav">
+            <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="">Условия оплаты</a></li>
+        </ul>
+        <ul class="nav slon__page__tabs-nav">
+            <li><a href="{% url 'delivery' %}">Доставка</a></li>
+            <li><a class="is_active" href="#">ОПЛАТА</a></li>
+        </ul>
+        <div class="slon__page__center-title flex-column">
+            <h1>Оплата</h1>
+            <div class="slon__page__subtitle">Оплачивайте покупку быстро и легко.</div>
+            <a href="{% url 'question' %}" class="slon__btn-orange">
+                ЗАДАТЬ ВОПРОС
+            </a>
+        </div>
+    </div>
+</div>
+<div class="section__border">
+    <div class="container tpad60 fpad60">
+        <div class="row fpad30">
+            <div class="col-lg-3 col-sm-6 fpad30">
+                <div class="card slon__card">
+                    <img src="{% static 'kibercat/15ae5623138881bc13de4539e7746800.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">При получении</h4>
+                        <div class="slon__card__text">
+                            Вы можете оплатить заказ при получении как наличными, так и картой.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 fpad30">
+                <div class="card slon__card">
+                    <img src="{% static 'kibercat/fe8b9e768fda943972f748191ddc4eec.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Онлайн</h4>
+                        <div class="slon__card__text">
+                            Вы можете оплатить заказ на сайте любой банковской картой без комиссии, а также другими
+                            видами онлайн платежей.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 fpad30">
+                <div class="card slon__card">
+                    <img src="{% static 'kibercat/5b3aef66db6fba8c1425087732abc1ff.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Оплата частями</h4>
+                        <div class="slon__card__text">
+                            Вы можете оформить заказ в рассрочку или кредит.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 fpad30">
+                <div class="card slon__card">
+                    <img src="{% static 'kibercat/e975462720b55820668c4890ec971088.png' %}">
+                    <div class="card-body">
+                        <h4 class="card-title">Безналичная оплата</h4>
+                        <div class="slon__card__text">
+                            Данная услуга предоставляется для юридических лиц.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 slon__main__text">
+                <p>
+                    <span style="font-size: 13pt;">Внимание! Все доступные способы оплаты можно посмотреть в процессе оформления заказа. Возможные варианты оплаты могут меняться, исходя из того, кто оформляет заказ: физическое или юридическое лицо, в какой населенный пункт требуется доставка, и какой способ доставки выбран.&nbsp;</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

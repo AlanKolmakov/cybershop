@@ -1,0 +1,82 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container">
+<!--    Навигация-->
+    <ul class="breadcrumbs nav">
+        <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="{% url 'main' %}">Главная</a></li>
+        <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="">Личный кабинет</a></li>
+    </ul>
+
+    <div class="slon__page__header slon__page__header--lk justify-content-center tpad40">
+        <h1 class="h1 text-center">Личный кабинет</h1>
+        <a href="{% url 'logout' %}" class="slon__page__header__right-link" style="height: 25px">
+            <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 23.28" style="margin-right: 10px">
+                <defs>
+                    <style>.ewcls-1 {fill: url(#ew_9);}</style>
+                    <linearGradient id="ew_9" x1="12" y1="0.03" x2="12" y2="23.06" gradientUnits="userSpaceOnUse">
+                        <stop offset="0.04" stop-color="aqua"></stop>
+                        <stop offset="1" stop-color="#0a898f"></stop>
+                    </linearGradient>
+                </defs>
+                <path class="ewcls-1" d="M16.1,0V2.25a9.91,9.91,0,1,1-8.2,0V0a12,12,0,1,0,8.2,0Z"></path>
+                <rect class="ewcls-1" x="10.88" width="2.24" height="11.64"></rect>
+            </svg>
+            Выйти
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="slon__reg-bg">
+    <div class="container">
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-10 col-xl-9">
+                <div class="slon__product slon__modal-box">
+                    <div class="slon__product__inner">
+                        <div class="slon__product__inner__top"></div>
+                        <div class="slon__product__inner__body slon__modal-box__wrap">
+<!--                            Форма Авторизации-->
+                            <form class="slon__main__form" name="form_auth" method="post" target="_top">
+                                {% csrf_token %}
+                                <h1 class="slon__modal-box__title">
+                                    Личный кабинет
+                                </h1>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="slon__main__form__label" for="id_username">Имя пользователя
+                                            *</label>
+                                        <div class="slon__main__input-box">
+                                            <input type="text" name="username" autofocus autocapitalize="none"
+                                                   autocomplete="username" maxlength="150" required id="id_username"
+                                                   class="slon__main__inp">
+                                        </div>
+                                        <label class="slon__main__form__label" for="id_password">Пароль *</label>
+                                        <div class="slon__main__input-box slon__main__input-box--pass">
+                                            <input type="password" name="password" autocomplete="current-password"
+                                                   class="slon__main__inp slon__main__inp--pass"
+                                                   required id="id_password">
+                                            <span class="slon__main__inp__show-pass"></span>
+                                        </div>
+                                        <div class="slon__main__submit-btn-box">
+                                            <input type="submit" name="auth" value="Войти"
+                                                   class="slon__main__btn-yellow">
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="{% url 'registration' %}" class="slon__all-link">
+                                                <span>Зарегистрироваться</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="slon__product__inner__bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

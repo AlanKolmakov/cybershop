@@ -1,0 +1,29 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+<div class="slon__page ">
+    <div class="container fix-color">
+        <ul class="breadcrumbs nav">
+            <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="">Информация</a></li>
+        </ul>
+
+        <div class="inside_page_content">
+            <div>В четырех информационных блоках мы подробно рассказываем:</div>
+        </div>
+        <div class="inside_page_content">
+            <br>
+            - о тенденциях мирового рынка и новых товарах, всех значимых событиях с фотографиями и видео-роликами в
+            статьях «<a href="{% url 'main' %}">Блога</a>»; <br>
+            - особенности и преимущества отдельных товаров, брендов, технических решений описаны в «Обзорах»; <br>
+            - <a href="{% url 'main' %}">ответы</a> на самые частые вопросы наших покупателей со всех концов России, из
+            Беларуси и Казахстана собраны в одном месте, надеемся, что они вам помогут. Если все-таки вы не нашли
+            ответов, то у вас особенный вопрос, напишите его в &nbsp;Чате или в форме обратной связи. &nbsp;&nbsp; <br>
+            - раздел «<a href="{% url 'brands' %}">Бренды</a>» содержит краткую информацию о производителях, все товары, того
+            или иного бренда, которые есть в наличии на данный момент в интернет-магазине KIBERCAT.RU.&nbsp;
+        </div>
+        <p>
+        </p>
+    </div>
+</div>
+{% endblock content %}

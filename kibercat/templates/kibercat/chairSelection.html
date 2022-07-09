@@ -1,0 +1,37 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+<div class="slon__main__pattern">
+    <div class="container slon__page">
+        <ul class="breadcrumbs nav">
+			<li class="breadcrumbs-item"><a class="breadcrumbs-link" href="{% url 'main' %}">Главная</a></li>
+			<li class="breadcrumbs-item"><a class="breadcrumbs-link" href="#">Подбор кресла</a></li></ul>
+        <div class="slon__page__header justify-content-center">
+            <h1 class="h1">Подбери кресло</h1>
+        </div>
+        <div class="slon__page__quiz">
+            <div class="slon__page__quiz__pic"></div>
+            <div class="slon__page__quiz__wrap">
+                <div class="slon__product__inner">
+                    <div class="slon__product__inner__body">
+                        <div class="slon__main__text">
+                            <p>Не можешь определиться с выбором кресла?</p>
+                            <p>Берешь другу и боишься прогадать с размером?</p>
+                            <p>Теряешься в характеристиках?</p>
+                            <p>Мы поможем справиться с ситуацией и подберем самый подходящий вариант.</p>
+                            <p>Пройди короткий тест ниже и получи кресло под индивидуальные параметры.</p>
+                        </div>
+                        <button data-toggle="modal" data-target="#quizModal" data-backdrop="static" class="slon__btn slon__btn--yellow w-100 slon__btn--h50">
+                            <span class="slon__btn__left"></span>
+                            <span class="slon__btn__center">ПОДОБРАТЬ КРЕСЛО</span>
+                            <span class="slon__btn__right"></span>
+                        </button>
+                    </div>
+                    <div class="slon__product__inner__bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

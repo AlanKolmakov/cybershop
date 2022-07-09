@@ -1,0 +1,182 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+<!--Навигация по каталогу-->
+<div class="container">
+    <ul class="breadcrumbs nav"></ul>
+</div>
+<!--Главное изображение-->
+<div class="container">
+    <div class="row slon__main__single-product__body-row">
+        <div class="col-lg-7">
+            <div class="slon__main__single-product__images">
+                <ul class="nav slon__main__single-product__badge slon__badge">
+                    {% if object.bestseller or object.novelty %}
+                    <li class="slon__main__single-product__badge__item">
+                        <span class="slon__badge__hit">
+                            {% if object.bestseller %}
+                            Хит Продаж
+                            {% elif object.novelty %}
+                            Новинка
+                            {% endif %}
+                        </span>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="lSSlideOuter vertical" style="padding-right: 75px;">
+                    <div class="lSSlideWrapper usingCss" style="height: 570px;">
+                        <ul id="imageGallery" class="lightSlider lsGrab lSSlide"
+                            style="height: 6270px; transform: translate3d(0px,0px, 0px);">
+                            <li class="slon__main__single-product__images__item lslide active"
+                                style="height: 570px; margin-buttom: 0px;">
+                                {% if object.image %}
+                                <img src="{{ object.image.url }}" alt="">
+                                {% else %}
+                                <img src="{% static 'kibercat/placeholder.png' %}" alt="">
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="row justify-content-start align-items-center slon__main__single-product__top-row">
+                <div class="col-8">
+                    <div class="slon__main__single-product__articule pb-4">
+                        Артикул: <b>{{ object.article_name }}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="slon__main__single-product__rev-top">
+                <div class="slon__main__single-product__col-res-rev">
+                    <div class="rating-result">
+                        {% for n in rating %}
+                        <img width="16" height="16" src="{% static 'kibercat/star.png' %}" alt="">
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="slon__main__single-product__col-all-rev">
+                </div>
+            </div>
+            <!--            -->
+            <div class="slon__main__single-product__top-right">
+                <h1>{{ object.name }}</h1>
+                <div class="slon__main__single-product__top-right__item slon__main__single-product__top-right__item--fav">
+                    <a class="slon__main__single-product__compare slon__main__link-ico" data-action="favbt"
+                       data-product-id="4949">
+                        <div class="slon__main__icon-left">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238.38 238.43">
+                                <path d="M119.18,20.58c6.43-6.43,12.71-12.65,18.91-19A4.93,4.93,0,0,1,142,0c16.79,0,33.59,0,50.39.09a4.82,4.82,0,0,1,3.27,1.51c13.68,16.28,27.25,32.65,40.91,49a7.33,7.33,0,0,1,1.82,5.13q-.08,40,0,79.94a5.93,5.93,0,0,1-2.07,4.92q-52.42,48.26-104.76,96.58a5,5,0,0,1-3,1.22q-9.3.17-18.62,0a5,5,0,0,1-3-1.15Q54.12,188.6,1.48,139.85a5.13,5.13,0,0,1-1.42-3.37q-.12-40.71,0-81.43a6.72,6.72,0,0,1,1.43-4Q21.89,26.42,42.41,1.83A4.29,4.29,0,0,1,46.12,0c16.8.07,33.6,0,50.39.11a5.69,5.69,0,0,1,3.61,1.51C106.46,7.79,112.68,14.09,119.18,20.58ZM119.24,43c-.8-.75-1.41-1.29-2-1.87-7.84-7.84-15.71-15.65-23.49-23.55a5.21,5.21,0,0,0-4.12-1.67c-12.08.06-24.16,0-36.24.08a4.56,4.56,0,0,0-3.11,1.35Q33.61,37.17,17.1,57.18a5.66,5.66,0,0,0-1.16,3.31c-.06,22.92,0,45.84-.08,68.76a5,5,0,0,0,1.81,4q46.19,42.56,92.22,85.25c3.15,2.94,6.18,4.47,10.47,4.06,2.27-.22,4.14-.43,6-2.14q47.15-43.71,94.44-87.24a4.72,4.72,0,0,0,1.7-3.83c-.06-22.92,0-45.84-.11-68.76A6.37,6.37,0,0,0,221,56.9q-16.35-19.82-32.89-39.46A4.83,4.83,0,0,0,184.8,16c-12-.11-24,0-36-.11a5.46,5.46,0,0,0-4.32,1.78C136.19,26.09,127.8,34.43,119.24,43Z"></path>
+                                <path d="M163.41,36.92c4.13-3.45,8.06-6.72,12.19-10.18L182,34.36c7.09,8.51,14.2,17,21.24,25.57a4.89,4.89,0,0,1,1.23,2.79c.08,13.15.06,26.3.05,39.45a7.71,7.71,0,0,1-.14,1H188.61v-2.62c0-10.25-.05-20.51,0-30.77A6.9,6.9,0,0,0,186.82,65C179,55.73,171.33,46.43,163.41,36.92Z"></path>
+                            </svg>
+                        </div>
+                        В избранное
+                    </a>
+                    <a class="slon__main__single-product__compare slon__main__link-ico" data-action="comparebt"
+                       data-product-id="4949">
+                        <div class="slon__main__icon-left">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 511.07">
+                                <path d="M423.6,149.78,501,128.27a15,15,0,1,0-8-28.9L396.75,126.1h0L271,161V15a15,15,0,0,0-30,0V169.36L107.56,206.43h0L11,233.25a15,15,0,0,0,4,29.46,14.78,14.78,0,0,0,4-.56L79.2,245.44,6.51,366.6H0v85.11L111.4,511.07l111.4-59.36V366.6h-6.51L134.4,230.11l234-65L295.71,286.27H289.2v85.11l111.4,59.36L512,371.38V286.27h-6.5ZM192.8,433l-81.4,44.64L30,433V396.6H192.8ZM181.31,366.6H41.5l69.9-116.52ZM400.6,169.75l69.91,116.52H330.69Zm0,227.58-81.4-44.64V316.27H482v36.42Z"></path>
+                            </svg>
+                        </div>
+                        В сравнение
+                    </a>
+                </div>
+                <!-- выбор цвета -->
+                <div class="slon__main__single-product__top-right__item">
+                    <div class="slon__main__single-product__politra">
+                        <span class="slon__main__single-product__top-right__item__label">Цвет:</span>
+                        <ul class="nav slon__list-catalog__product__politra">
+                        </ul>
+                    </div>
+                </div>
+                <!-- цена -->
+                <div class="slon__main__single-product__top-right__item">
+                    <div class="slon__list-catalog__product__price col-6 fpad15">
+                        <span class="slon__product__price-value">{{ object.price }}
+                            <span class="b-rub">Р</span>
+                        </span>
+                    </div>
+                </div>
+                <div id="jsBuyTo">
+                    <div class="slon__main__single-product__top-right__item">
+                        <div class="slon__main__single-product__btn-row">
+                            <div class="fpad15">
+                                <div class="slon__btn-azure__box">
+                                    <button class="slon__btn-azure2 h-60" data-action="addToBasket" data-item-id="4949">
+                                        <i class="ico-cart"></i> В КОРЗИНУ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slon__main__single-product__top-right__footer">
+                    <a target="_blank" href="{% url 'delivery' %}" class="slon__main__single-product__delivery__link">Подробнее
+                        про условия доставки и оплаты</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+<div class="slon__main__single-product__body" id="productDesc">
+    <div class="slon__main__single-product__body__nav" id="productDescNav">
+        <div class="container">
+            <nav class="navbar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="#description" class="nav-link slon__main__anchor active">ОПИСАНИЕ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#characteristic" class="nav-link slon__main__anchor">Характеристики</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#video" class="nav-link slon__main__anchor">ВидеоОБЗОРЫ</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="slon__main__single-product__desc-wrap" id="productDescWrap">
+        <div id="description" class="slon__main__section section">
+            <div class="slon__main__section__mob">
+                <div class="section__body">
+                    <div class="container">
+                        <div class="row tpad60 fpad60 section__body__row">
+                            <div class="col-lg-4 fpad30 section__body__col-label">
+                                <div class="slon__main__caption">Описание</div>
+                            </div>
+                            <div class="col-lg-8 slon__main__text section__body__col-desc">
+                                {{ object.short_description|safe }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slon__main__section section" id="characteristic">
+            <div class="slon__main__section__mob">
+                <div class="section__body" id="mobCharacteristic">
+                    <section class="section__anchor-top">
+                        <div class="container">
+                            <div class="row section__body__row">
+                                <div class="col-lg-4 fpad30 section__body__col-label">
+                                    <div class="slon__main__caption">ХАРАКТЕРИСТИКИ</div>
+                                </div>
+                                <div class="col-lg-8 slon__main__characteristic section__body__col-desc">
+                                    <div class="slon__main__characteristic__row">
+                                        <div class="slon__main__characteristic__value">{{ object.full_description|safe }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

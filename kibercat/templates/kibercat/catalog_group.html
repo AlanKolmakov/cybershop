@@ -1,0 +1,98 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+<!--Навигация-->
+<div class="container slon__page">
+    <ul class="breadcrumbs nav">
+        <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="{% url 'main' %}">Главная</a></li>
+        <li class="breadcrumbs-item"><a class="breadcrumbs-link" href="">{{ cat_group.name }}</a></li>
+    </ul>
+    <div class="slon__page__header">
+        <h1 class="h1">{{ cat_group.name }}</h1>
+    </div>
+
+<!--Отображение категории товаров в группе-->
+    <div class="slon__subcategories">
+        <div class="row">
+            {% for obj in cat_group_all %}
+            <div class="col-lg-3 col-md-6 fpad30">
+                <div class="slon__subcategories__item">
+                    <a href="{% url obj.slug %}" class="slon__subcategories__item__link">
+                        <div class="slon__subcategories__item__wrap">
+                            <div class="slon__subcategories__item__img">
+                                <img src="/media/{{ obj.image }}"
+                                     alt="{{ obj.name }}">
+                            </div>
+                            <div class="slon__subcategories__item__title">{{ obj.name }}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+{% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Отображение товаров -->
+<div class="container fpad60">
+    {% for obj in cat_group_all %}
+    <aside class="slon__list-catalog">
+        <div class="slon__list-catalog__caption">{{ obj.name }}</div>
+        <div class="slon__list-catalog__wrap">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for p in object %}
+                    {% if p.category.id == obj.id %}
+                    <div class="swiper-slide swiper-slide-active" style="width: 278px;">
+                        <div class="slon__list-catalog__slider__item slon__product">
+                            <div class="slon__product__inner">
+                                <div class="slon__product__inner__top"></div>
+                                <div class="slon__product__inner__body">
+                                    <a href="{{ p.get_absolute_url }}"
+                                       class="slon__list-catalog__product">
+                                        <div class="slon__list-catalog__product__pic">
+                                            {% if p.image %}
+                                            <img style="height: 208px" src="/media/{{ p.image }}" alt="">
+                                            {% else %}
+                                            <img src="{% static 'kibercat/placeholder.png' %}" alt="">
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                    <div class="slon__product__text">
+                                        <a class="slon__list-catalog__product__title"
+                                           href="{{ p.get_absolute_url }}">{{ p.name }}</a>
+                                        <div class="slon__product__inner__footer">
+                                            <div class="slon__list-catalog__product__price">
+                                                <span class="slon__product__price-value">
+                                                    {{ p.price }}
+                                                    <span class="b-rub">Р</span>
+                                                 </span>
+                                            </div>
+                                            <div class="slon__list-catalog__product__bay">
+                                                <button class="slon__btn slon__btn--green slon__btn--h40 w-100"
+                                                        data-id="4073" type="submit">
+                                                    <span class="slon__btn__left"></span>
+                                                    <span class="slon__btn__center">
+                                                        <img class="ico-bay" src="{% static 'kibercat/basket2.png' %}"
+                                                             alt=""
+                                                             width="25" height="24">В КОРЗИНУ
+                                                    </span>
+                                                    <span class="slon__btn__right"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slon__product__inner__bottom"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </aside>
+    {% endfor %}
+</div>
+{% endblock content %}

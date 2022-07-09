@@ -1,0 +1,59 @@
+{% extends 'kibercat/base.html' %}
+{% load static %}
+{% block content %}
+<div class="slon__reg-bg">
+    <div class="container">
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-10 col-xl-9">
+                <div class="slon__product slon__modal-box">
+                    <div class="slon__product__inner">
+                        <div class="slon__product__inner__top"></div>
+                        <div class="slon__product__inner__body slon__modal-box__wrap">
+                            <form method="post" class="slon__main__form">
+                                {% csrf_token %}
+                                <h1 class="slon__modal-box__title">Регистрация</h1>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="slon__main__form__label" for="id_username">Логин *</label>
+                                        <div class="slon__main__input-box">
+                                            <input type="text" id="id_username" name="username"
+                                                   class="slon__main__inp">
+                                        </div>
+                                        <label class="slon__main__form__label" for="id_email">E-mail *</label>
+                                        <div class="slon__main__input-box">
+                                            <input type="email" id="id_email" name="email"
+                                                   class="slon__main__inp">
+                                        </div>
+                                        <label class="slon__main__form__label" for="id_password1">Пароль *</label>
+                                        <div class="slon__main__input-box slon__main__input-box--pass">
+                                            <input type="password" id="id_password1" name="password1"
+                                                   class="slon__main__inp slon__main__inp--pass" required="">
+                                            <span class="slon__main__inp__show-pass"></span>
+                                        </div>
+                                        <label class="slon__main__form__label" for="id_password2">Подтверждение пароля
+                                            *</label>
+                                        <div class="slon__main__input-box slon__main__input-box--pass">
+                                            <input type="password" id="id_password2" name="password2"
+                                                   class="slon__main__inp slon__main__inp--pass" required="">
+                                            <span class="slon__main__inp__show-pass"></span>
+                                        </div>
+                                    </div>
+                                    <div class="slon__main__submit-btn-box">
+                                        <input type="submit"
+                                               value="Зарегистрироваться" class="slon__main__btn-yellow">
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="{% url 'auth' %}" class="slon__all-link">
+                                            <span>Я уже зарегистрирован</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
